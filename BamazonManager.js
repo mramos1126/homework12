@@ -12,7 +12,7 @@ database : 'Bamazon',
 port : 8889
 });
 
-
+// lets you pick one  of these functions
 switch(select){
   case 'view-products':
   viewProducts();
@@ -26,6 +26,8 @@ switch(select){
   case 'add-new-product':
   addProduct();
 }
+  
+// lets you see the database
   function  viewProducts(){
 
 con.query('SELECT * FROM Products',function(err,rows){
@@ -36,6 +38,7 @@ con.query('SELECT * FROM Products',function(err,rows){
 });
   }
 
+// lets you see inventory that quantity is below 5
 function lowInventory(){
 con.query('SELECT * FROM Products  WHERE StockQuantity < 5',function(err,rows){
   if(err) throw err;
@@ -45,7 +48,7 @@ con.query('SELECT * FROM Products  WHERE StockQuantity < 5',function(err,rows){
 });
 
 }
-
+//  add inventory 
 function addInventory(){
 con.query('UPDATE  Products SET StockQuantity ="' + input + '"WHERE StockQuantity = 3',function(err,rows){
   if(err) throw err;
@@ -56,7 +59,7 @@ con.query('UPDATE  Products SET StockQuantity ="' + input + '"WHERE StockQuantit
 });
 
 }
-
+// add a new row that consist of id, product, department, price and quantity
 function addProduct(){
 con.query('INSERT INTO Products VALUES(' + input + ')' , function(err, rows){
 	 if(err) throw err;
