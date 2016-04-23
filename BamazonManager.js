@@ -1,6 +1,6 @@
 var select= process.argv[2];
 var input = process.argv[3];
-
+var inputID = process.argv[4];
 
 var mysql = require('mysql');
  var con = mysql.createConnection({
@@ -50,7 +50,7 @@ con.query('SELECT * FROM Products  WHERE StockQuantity < 5',function(err,rows){
 }
 //  add inventory 
 function addInventory(){
-con.query('UPDATE  Products SET StockQuantity ="' + input + '"WHERE StockQuantity = 3',function(err,rows){
+con.query('UPDATE  Products SET StockQuantity ="' + input + '"WHERE ItemID =' + inputID,function(err,rows){
   if(err) throw err;
 
   	console.log('Data received from Db:\n');
