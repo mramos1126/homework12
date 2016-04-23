@@ -47,7 +47,7 @@ con.query('SELECT * FROM Products  WHERE StockQuantity < 5',function(err,rows){
 }
 
 function addInventory(){
-con.query('UPDATE  Products SET StockQuantity ="' + input + '"WHERE StockQuantity = 0',function(err,rows){
+con.query('UPDATE  Products SET StockQuantity ="' + input + '"WHERE StockQuantity = 3',function(err,rows){
   if(err) throw err;
 
   	console.log('Data received from Db:\n');
